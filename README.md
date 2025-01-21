@@ -2,6 +2,9 @@
 
 This project implements a multi-agent simulation of the Donor Game using Large Language Models (LLMs) as agents with distinct cultural profiles based on Hofstede's Cultural Dimensions Theory.
 
+This projet was inspired by and builds upon Google's (Cultural Evolution of Cooperation among LLM Agents Paper
+)[https://arxiv.org/abs/2412.10270]
+
 ## Overview
 
 The simulation explores how cultural differences influence cooperation and resource-sharing behavior in a modified version of the Donor Game. Each agent is imbued with cultural characteristics based on Hofstede's six cultural dimensions:
