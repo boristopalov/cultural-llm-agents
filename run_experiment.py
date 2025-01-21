@@ -27,21 +27,20 @@ def setup_logging(verbose: bool) -> None:
 
 def create_agent_factory(profile_type: str, model: str):
     """Creates an agent factory based on the specified profile type."""
-    nordic, east_asian = create_example_profiles()
+    profiles = create_example_profiles()
     
     # Get the full model name from our mapping
     model_name = MODELS.get(model, model)  # Use provided model string if not in mapping
     
-    if profile_type == "nordic":
-        return lambda agent_id: DonorGameAgent(nordic, agent_id, model=model_name)
-    elif profile_type == "east_asian":
-        return lambda agent_id: DonorGameAgent(east_asian, agent_id, model=model_name)
-    elif profile_type == "mixed":
+    if profile_type == "mixed":
+        profile_types = list(profiles.keys())
         return lambda agent_id: DonorGameAgent(
-            nordic if int(agent_id.split('_')[1]) % 2 == 0 else east_asian,
+            profiles[profile_types[int(agent_id.split('_')[1]) % len(profile_types)]],
             agent_id,
             model=model_name
         )
+    elif profile_type in profiles:
+        return lambda agent_id: DonorGameAgent(profiles[profile_type], agent_id, model=model_name)
     else:
         raise ValueError(f"Unknown profile type: {profile_type}")
 
@@ -58,7 +57,7 @@ def main():
     
     # Experiment parameters
     parser.add_argument("--profile-type", "-p", 
-                       choices=["nordic", "east_asian", "mixed"],
+                       choices=["nordic", "east_asian", "western", "arab", "latin_american", "mixed"],
                        default="mixed",
                        help="Cultural profile type for agents")
     parser.add_argument("--num-agents", "-n", 

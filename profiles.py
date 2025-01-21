@@ -216,24 +216,60 @@ When responding to queries and making decisions, you should embody these cultura
 
 # Example usage
 def create_example_profiles():
-    # Nordic-inspired profile
+    # Nordic profile (Sweden, Denmark, Norway)
     nordic = CulturalProfile(
         power_distance=PowerDistance.EGALITARIAN,
         individualism=Individualism.INDIVIDUALIST,
         masculinity=Masculinity.FEMININE,
-        uncertainty_avoidance=UncertaintyAvoidance.FLEXIBLE,
-        time_orientation=TimeOrientation.SHORT_TERM,
+        uncertainty_avoidance=UncertaintyAvoidance.MODERATE,
+        time_orientation=TimeOrientation.BALANCED,
         indulgence=Indulgence.INDULGENT
     )
     
-    # East Asian-inspired profile
+    # East Asian profile (Japan, China, South Korea)
     east_asian = CulturalProfile(
         power_distance=PowerDistance.HIERARCHICAL,
         individualism=Individualism.COLLECTIVIST,
-        masculinity=Masculinity.MASCULINE,
+        masculinity=Masculinity.MODERATE,
         uncertainty_avoidance=UncertaintyAvoidance.STRUCTURED,
         time_orientation=TimeOrientation.LONG_TERM,
         indulgence=Indulgence.RESTRAINT
     )
+
+    # Western profile (US, UK, Australia)
+    western = CulturalProfile(
+        power_distance=PowerDistance.EGALITARIAN,
+        individualism=Individualism.INDIVIDUALIST,
+        masculinity=Masculinity.MASCULINE,
+        uncertainty_avoidance=UncertaintyAvoidance.FLEXIBLE,
+        time_orientation=TimeOrientation.SHORT_TERM,
+        indulgence=Indulgence.INDULGENT
+    )
+
+    # Arab profile
+    arab = CulturalProfile(
+        power_distance=PowerDistance.HIERARCHICAL,
+        individualism=Individualism.COLLECTIVIST,
+        masculinity=Masculinity.MASCULINE,
+        uncertainty_avoidance=UncertaintyAvoidance.STRUCTURED,
+        time_orientation=TimeOrientation.SHORT_TERM,
+        indulgence=Indulgence.RESTRAINT
+    )
+
+    # Latin American profile
+    latin_american = CulturalProfile(
+        power_distance=PowerDistance.HIERARCHICAL,
+        individualism=Individualism.COLLECTIVIST,
+        masculinity=Masculinity.MODERATE,
+        uncertainty_avoidance=UncertaintyAvoidance.STRUCTURED,
+        time_orientation=TimeOrientation.SHORT_TERM,
+        indulgence=Indulgence.INDULGENT
+    )
     
-    return nordic, east_asian
+    return {
+        "nordic": nordic,
+        "east_asian": east_asian,
+        "western": western,
+        "arab": arab,
+        "latin_american": latin_american
+    }
